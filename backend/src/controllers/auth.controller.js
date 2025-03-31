@@ -3,6 +3,7 @@ import { generateToken } from "../lib/utils.js";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 export const signup = async (req, res) => {
+    console.log("JWT_SECRET:", process.env.JWT_SECRET);
   const { fullName, email, password } = req.body;
   try {
     if (!fullName || !email || !password) {
