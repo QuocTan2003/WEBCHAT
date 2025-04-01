@@ -5,12 +5,12 @@ import { getReceiverSocketId, io } from "../index.js";
 export const getUsersForSidebar = async (req, res) => {
   try {
     const loggedInUser = req.user._id;
-    console.log("🚀 ~ getUsersForSidebar ~ loggedInUser:", loggedInUser);
+    console.log("~ getUsersForSidebar ~ loggedInUser:", loggedInUser);
     // tìm tất cả người dùng nhưng không tìm người dùng hiện tại đang đăng nhập
     const filteredUsers = await User.find({
       _id: { $ne: loggedInUser },
     }).select("-password");
-    console.log("🚀 ~ getUsersForSidebar ~ filteredUsers:", filteredUsers);
+    console.log("~ getUsersForSidebar ~ filteredUsers:", filteredUsers);
     return res.status(200).json(filteredUsers);
   } catch (error) {
     console.error("Error in getUsersForSidebar: ", error.message);

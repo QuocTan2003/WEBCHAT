@@ -65,7 +65,7 @@ export const login = async (req, res) => {
     generateToken(users.id, res);
     // Chuyển object và xóa password trước khi trả về
     const userResponse = users.toObject();
-    console.log("🚀 ~ login ~ userResponse:", userResponse);
+    console.log("~ login ~ userResponse:", userResponse);
     delete userResponse.password;
     return res.status(201).json({
       message: "Đăng nhập thành công",
@@ -86,7 +86,7 @@ export const updateProfile = async (req, res) => {
   try {
     const { profilePic } = req.body;
     const userId = req.user._id;
-    console.log("🚀 ~ updateProfile ~ userId:", userId);
+    console.log("~ updateProfile ~ userId:", userId);
     if (!profilePic) {
       return res.status(400).json({ message: "Profile pic is required" });
     }
@@ -101,7 +101,7 @@ export const updateProfile = async (req, res) => {
         new: true,
       }
     );
-    console.log("🚀 ~ updateProfile ~ updatedUser: server", updatedUser);
+    console.log("~ updateProfile ~ updatedUser: server", updatedUser);
     return res.status(200).json(updatedUser);
   } catch (error) {
     console.log("test server", req.body);
